@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Pattu ❤️</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="{{ url_for('static', filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
+</audio>
+
+<!-- Login Screen -->
+<section id="loginScreen" class="screen active">
+
+    <div class="card">
+
+        <h1>🎂 Birthday Surprise</h1>
+
+        <h2>For Pattu ❤️</h2>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter Name">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password">
+
+        <button onclick="login()">
+            Enter ❤️
+        </button>
+
+        <p id="error"></p>
+
+    </div>
+
+</section>
+
+<!-- Loading Screen -->
+<section id="loadingScreen" class="screen">
+
+    <div class="card">
+
+        <h1>Loading...</h1>
+
+        <div class="loader"></div>
+
+    </div>
+
+</section>
+
+<!-- Countdown Screen -->
+<section id="countdownScreen" class="screen">
+
+    <div class="card">
+
+        <h1>Get Ready ❤️</h1>
+
+        <h2 id="countNumber">3</h2>
+
+        <p>A special surprise is waiting for you...</p>
+
+    </div>
+
+</section>
+<!-- Puppy Story Screen -->
+<section id="puppyScreen" class="screen">
+
+    <div class="card">
+
+        <img id="puppyImage"
+        src="{{ url_for('static', filename='images/puppy_happy.png') }}">
+
+        <h1 id="puppyTitle">
+
+            Hey Pattu ❤️
+
+        </h1>
+
+        <p id="puppyText">
+
+            I made something special just for you.
+
+            Do you want to see it?
+
+        </p>
+
+        <div id="choiceButtons">
+
+            <button onclick="yesClicked()">
+
+                ❤️ YES
+
+            </button>
+
+            <button onclick="noClicked()">
+
+                🙈 NO
+
+            </button>
+
+        </div>
+
+        <button
+        id="continueBtn"
+        style="display:none;"
+        onclick="startBirthday()">
+
+            Continue ❤️
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
