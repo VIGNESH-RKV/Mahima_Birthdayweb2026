@@ -2,216 +2,268 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-
-background:#ffd6e7;
-
+height:100vh;
 overflow:hidden;
+background:linear-gradient(-45deg,#ff9ac9,#ffc8dd,#ffe5ec,#ffd6ff,#fff0f6);
+background-size:600% 600%;
+animation:bgMove 18s ease infinite;
+position:relative;
+cursor:default;
+}
 
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+#stars{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+pointer-events:none;
+z-index:0;
+}
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.2;}
+to{opacity:1;}
 }
 
 .screen{
-
+position:absolute;
+width:100%;
+height:100%;
 display:none;
-
-width:100vw;
-
-height:100vh;
-
 justify-content:center;
-
 align-items:center;
-
+padding:20px;
 }
 
-.screen.active{
-
+.active{
 display:flex;
-
 }
 
 .card{
-
-background:white;
-
+width:420px;
+max-width:95%;
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(15px);
 padding:40px;
-
-border-radius:20px;
-
+border-radius:25px;
 text-align:center;
-
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-
-width:400px;
-
+box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
-h1{
-
+.card h1{
+font-size:40px;
 color:#ff1493;
-
-margin-bottom:20px;
-
+margin-bottom:10px;
 }
 
-h2{
-
+.card h2{
 margin-bottom:25px;
+color:white;
+}
 
+.card p{
+font-size:18px;
+margin-bottom:30px;
+color:white;
+line-height:30px;
 }
 
 input{
-
 width:100%;
-
-padding:14px;
-
-margin:10px 0;
-
-font-size:18px;
-
+padding:15px;
+margin-bottom:15px;
+border:none;
 border-radius:10px;
-
-border:1px solid #ccc;
-
+font-size:17px;
 }
 
 button{
-
 width:100%;
-
-padding:14px;
-
-margin-top:20px;
-
-background:#ff1493;
-
-color:white;
-
-font-size:18px;
-
+padding:18px;
+font-size:20px;
+font-weight:600;
 border:none;
-
-border-radius:10px;
-
+border-radius:50px;
+background:linear-gradient(90deg,#ff1493,#ff4fb3);
+color:white;
 cursor:pointer;
-
+transition:.35s;
+box-shadow:0 10px 30px rgba(255,20,147,.4);
 }
 
 button:hover{
-
-transform:scale(1.03);
-
+transform:translateY(-5px) scale(1.04);
+box-shadow:0 20px 45px rgba(255,20,147,.55);
 }
 
 #error{
-
 margin-top:15px;
-
-color:red;
-
+color:yellow;
+font-size:18px;
 }
 
-.loader{
+@media(max-width:768px){
 
-width:70px;
+.card{
+width:460px;
+max-width:92%;
+padding:45px;
+background:rgba(255,255,255,.22);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.35);
+border-radius:35px;
+box-shadow:
+0 20px 60px rgba(0,0,0,.15),
+0 0 80px rgba(255,105,180,.15);
+position:relative;
+overflow:hidden;
+animation:cardEntry 1.2s ease;
+}
 
-height:70px;
-
-border:8px solid #eee;
-
-border-top:8px solid #ff1493;
-
+.card::before{
+content:"";
+position:absolute;
+top:-120px;
+left:-120px;
+width:240px;
+height:240px;
+background:rgba(255,255,255,.25);
 border-radius:50%;
+filter:blur(10px);
+}
 
-margin:30px auto;
+.card::after{
+content:"";
+position:absolute;
+bottom:-100px;
+right:-100px;
+width:200px;
+height:200px;
+background:rgba(255,255,255,.15);
+border-radius:50%;
+}
 
-animation:spin 1s linear infinite;
+.card h1{
+font-size:58px;
+font-weight:700;
+line-height:65px;
+margin-bottom:12px;
+background:linear-gradient(90deg,#ff1493,#ff4fb3,#ff8cc8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-shadow:0 0 30px rgba(255,20,147,.3);
+}
+
+.card p{
+font-size:16px;
+line-height:28px;
+}
 
 }
 
-@keyframes spin{
-
-100%{
-
-transform:rotate(360deg);
-
+.puppy-card img{
+width:220px;
+margin-bottom:20px;
+animation:floatPuppy 3s ease-in-out infinite;
 }
 
+@keyframes floatPuppy{
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
 }
 
-#countNumber{
-
-font-size:120px;
-
-color:#ff1493;
-
-margin:20px 0;
-
-animation:pulse .8s infinite;
-
+.card h2{
+font-size:34px;
+font-weight:600;
+margin-bottom:25px;
+color:white;
+text-shadow:0 5px 15px rgba(0,0,0,.25);
 }
 
-@keyframes pulse{
+.card p{
+font-size:20px;
+line-height:36px;
+color:white;
+margin-bottom:35px;
+}
+
+@keyframes cardEntry{
 
 0%{
 
-transform:scale(1);
+opacity:0;
 
-}
-
-50%{
-
-transform:scale(1.2);
+transform:translateY(60px) scale(.8);
 
 }
 
 100%{
 
-transform:scale(1);
+opacity:1;
+
+transform:translateY(0) scale(1);
 
 }
 
 }
 
-#puppyImage{
+.heart{
 
-width:220px;
+position:absolute;
 
-margin-bottom:20px;
+font-size:20px;
 
-animation:bounce 2s infinite;
+animation:heartFloat linear infinite;
 
-}
+opacity:.8;
 
-#choiceButtons{
-
-margin-top:20px;
+pointer-events:none;
 
 }
 
-#choiceButtons button{
+@keyframes heartFloat{
 
-width:170px;
+0%{
 
-margin:8px;
+transform:translateY(100vh) rotate(0deg);
 
-}
-
-#continueBtn{
-
-margin-top:25px;
+opacity:0;
 
 }
 
-@keyframes bounce{
+20%{
 
-50%{
+opacity:1;
 
-transform:translateY(-15px);
+}
+
+100%{
+
+transform:translateY(-120px) rotate(360deg);
+
+opacity:0;
 
 }
 

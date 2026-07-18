@@ -1,137 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Happy Birthday Pattu ❤️</title>
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
 
 <body>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-    <source src="{{ url_for('static', filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto">
+<source src="{{ url_for('static',filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
 </audio>
 
-<!-- Login Screen -->
-<section id="loginScreen" class="screen active">
+<div id="stars"></div>
 
-    <div class="card">
+<section id="welcomeScreen" class="screen active">
 
-        <h1>🎂 Birthday Surprise</h1>
+<div class="card">
 
-        <h2>For Pattu ❤️</h2>
+<h1>Happy<br>Birthday</h1>
 
-        <input
-            type="text"
-            id="username"
-            placeholder="Enter Name">
+<h2>Alla Mahima Kumari</h2>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Password">
+<p>
 
-        <button onclick="login()">
-            Enter ❤️
-        </button>
+A magical birthday journey has been created especially for you.
 
-        <p id="error"></p>
+Click below and let the surprise begin.
 
-    </div>
+</p>
+
+<button id="beginBtn">
+Begin Journey ❤️
+</button>
+
+</div>
 
 </section>
-
-<!-- Loading Screen -->
-<section id="loadingScreen" class="screen">
-
-    <div class="card">
-
-        <h1>Loading...</h1>
-
-        <div class="loader"></div>
-
-    </div>
-
-</section>
-
-<!-- Countdown Screen -->
-<section id="countdownScreen" class="screen">
-
-    <div class="card">
-
-        <h1>Get Ready ❤️</h1>
-
-        <h2 id="countNumber">3</h2>
-
-        <p>A special surprise is waiting for you...</p>
-
-    </div>
-
-</section>
-<!-- Puppy Story Screen -->
 <section id="puppyScreen" class="screen">
 
-    <div class="card">
+<div class="card puppy-card">
 
-        <img id="puppyImage"
-        src="{{ url_for('static', filename='images/puppy_happy.png') }}">
+<img
+id="puppyImage"
+src="{{ url_for('static',filename='images/puppy_happy.png') }}">
 
-        <h1 id="puppyTitle">
+<h2>Hello... ❤️</h2>
 
-            Hey Pattu ❤️
+<p id="puppyText">
 
-        </h1>
+I'm Pattu's little birthday helper.
 
-        <p id="puppyText">
+Before opening the surprise,
 
-            I made something special just for you.
+I need to make sure you're really her.
 
-            Do you want to see it?
+</p>
 
-        </p>
+<button onclick="goToLogin()">
 
-        <div id="choiceButtons">
+Continue →
 
-            <button onclick="yesClicked()">
+</button>
 
-                ❤️ YES
-
-            </button>
-
-            <button onclick="noClicked()">
-
-                🙈 NO
-
-            </button>
-
-        </div>
-
-        <button
-        id="continueBtn"
-        style="display:none;"
-        onclick="startBirthday()">
-
-            Continue ❤️
-
-        </button>
-
-    </div>
+</div>
 
 </section>
 
+<section id="loginScreen" class="screen">
 
+<div class="card">
 
+<h1>Login</h1>
+<img id="loginPuppy"
+src="{{ url_for('static',filename='images/puppy_happy.png') }}"
+style="width:170px;margin-bottom:20px;">
+<input id="username" placeholder="Enter Your Name">
 
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="login()">
+Unlock Surprise
+</button>
+
+<p id="error"></p>
+
+</div>
+
+</section>
+
+<script src="{{ url_for('static',filename='js/app.js') }}"></script>
 
 </body>
-
 </html>

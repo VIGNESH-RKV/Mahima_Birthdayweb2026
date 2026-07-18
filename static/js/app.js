@@ -1,9 +1,36 @@
-const USERNAME = "Pattu";
-const PASSWORD = "2108";
+const USERNAME="Pattu";
+const PASSWORD="2108";
 
-const music = document.getElementById("bgMusic");
+const music=document.getElementById("bgMusic");
 
-music.volume = 0.4;
+const beginBtn=document.getElementById("beginBtn");
+
+createStars();
+createHearts();
+
+function createStars(){
+
+const stars=document.getElementById("stars");
+
+for(let i=0;i<120;i++){
+
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+
+star.style.top=Math.random()*100+"%";
+
+star.style.animationDelay=Math.random()*2+"s";
+
+stars.appendChild(star);
+
+}
+
+}
+
+beginBtn.onclick=startExperience;
 
 function showScreen(id){
 
@@ -17,94 +44,107 @@ document.getElementById(id).classList.add("active");
 
 }
 
+async function startExperience(){
+
+try{
+
+await music.play();
+
+}catch(e){}
+
+showScreen("puppyScreen");
+
+}
+
 function login(){
 
 const user=document.getElementById("username").value.trim();
 
 const pass=document.getElementById("password").value.trim();
 
-if(user===USERNAME && pass===PASSWORD){
+const puppy=document.getElementById("loginPuppy");
 
-music.play().catch(()=>{});
+const error=document.getElementById("error");
 
-showScreen("loadingScreen");
+if(user===USERNAME&&pass===PASSWORD){
+
+puppy.src="static/images/puppy_love.png";
+
+error.style.color="#90ee90";
+
+error.innerHTML="Yay! Welcome Pattu ❤️";
 
 setTimeout(()=>{
 
-startCountdown();
+alert("Login Successful");
 
-},3000);
+},1500);
 
 }
 
 else{
 
-document.getElementById("error").innerHTML="Wrong Name or Password";
+puppy.src="static/images/puppy_angry.png";
 
-}
+error.style.color="#ffd700";
 
-}
+error.innerHTML="Hmm... I don't think you're Pattu!";
 
-function startCountdown(){
+document.querySelector("#loginScreen .card").animate([
 
-showScreen("countdownScreen");
+{transform:"translateX(-10px)"},
 
-let count = 3;
+{transform:"translateX(10px)"},
 
-const counter = document.getElementById("countNumber");
+{transform:"translateX(-10px)"},
 
-const timer = setInterval(()=>{
+{transform:"translateX(10px)"},
 
-count--;
+{transform:"translateX(0px)"}
 
-if(count>0){
+],{
 
-counter.innerHTML = count;
+duration:450
 
-}
-else{
-
-clearInterval(timer);
-
-counter.innerHTML = "🎉";
+});
 
 setTimeout(()=>{
 
-showScreen("puppyScreen");
+puppy.src="static/images/puppy_happy.png";
 
-},1000);
+error.innerHTML="";
 
-}
-
-},1000);
-
-}
-function noClicked(){
-
-document.getElementById("puppyImage").src="/static/images/puppy_angry.png";
-
-document.getElementById("puppyTitle").innerHTML="How Dare You! 😤";
-
-document.getElementById("puppyText").innerHTML="You clicked NO... Try again ❤️";
+},2000);
 
 }
 
-function yesClicked(){
+}
+function goToLogin(){
 
-document.getElementById("puppyImage").src="/static/images/puppy_love.png";
-
-document.getElementById("puppyTitle").innerHTML="That's My Good Girl ❤️";
-
-document.getElementById("puppyText").innerHTML="I knew you would say YES.";
-
-document.getElementById("choiceButtons").style.display="none";
-
-document.getElementById("continueBtn").style.display="inline-block";
+showScreen("loginScreen");
 
 }
 
-function startBirthday(){
+function createHearts(){
 
-alert("Module 5 (Birthday Celebration) starts here.");
+for(let i=0;i<18;i++){
+
+const heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(16+Math.random()*22)+"px";
+
+heart.style.animationDuration=(8+Math.random()*6)+"s";
+
+heart.style.animationDelay=Math.random()*8+"s";
+
+document.body.appendChild(heart);
+
+}
 
 }
