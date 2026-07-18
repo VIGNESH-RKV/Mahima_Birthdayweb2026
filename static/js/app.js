@@ -6,6 +6,7 @@ const music=document.getElementById("bgMusic");
 const beginBtn=document.getElementById("beginBtn");
 
 createStars();
+
 createHearts();
 
 function createStars(){
@@ -76,7 +77,7 @@ error.innerHTML="Yay! Welcome Pattu ❤️";
 
 setTimeout(()=>{
 
-alert("Login Successful");
+showLoading();
 
 },1500);
 
@@ -93,13 +94,9 @@ error.innerHTML="Hmm... I don't think you're Pattu!";
 document.querySelector("#loginScreen .card").animate([
 
 {transform:"translateX(-10px)"},
-
 {transform:"translateX(10px)"},
-
 {transform:"translateX(-10px)"},
-
 {transform:"translateX(10px)"},
-
 {transform:"translateX(0px)"}
 
 ],{
@@ -146,5 +143,244 @@ heart.style.animationDelay=Math.random()*8+"s";
 document.body.appendChild(heart);
 
 }
+
+}
+
+function showLoading(){
+
+showScreen("loadingScreen");
+
+const messages=[
+"Collecting beautiful memories...",
+"Decorating your birthday...",
+"Wrapping your surprise...",
+"Adding lots of love...",
+"Almost ready..."
+];
+
+let progress=0;
+let index=0;
+
+const fill=document.getElementById("progressFill");
+const value=document.getElementById("progressValue");
+const text=document.getElementById("loadingText");
+
+const timer=setInterval(()=>{
+
+progress++;
+
+fill.style.width=progress+"%";
+value.innerHTML=progress+"%";
+
+if(progress%20===0 && index<messages.length-1){
+
+index++;
+text.innerHTML=messages[index];
+
+}
+
+if(progress>=100){
+
+clearInterval(timer);
+
+setTimeout(()=>{
+
+showBirthday();
+
+},500);
+
+}
+
+},40);
+
+}
+
+function showBirthday(){
+
+showScreen("birthdayScreen");
+
+startConfetti();
+
+}
+
+function startConfetti(){
+
+const colors=[
+"#ff1493",
+"#ffd700",
+"#87cefa",
+"#90ee90",
+"#ffffff"
+];
+
+for(let i=0;i<120;i++){
+
+const confetti=document.createElement("div");
+
+confetti.className="confetti";
+
+confetti.style.left=Math.random()*100+"%";
+
+confetti.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+confetti.style.animationDuration=(3+Math.random()*3)+"s";
+
+confetti.style.width=(6+Math.random()*8)+"px";
+
+confetti.style.height=confetti.style.width;
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+
+confetti.remove();
+
+},6000);
+
+}
+
+}
+
+function goToLetter(){
+
+showScreen("letterScreen");
+
+}
+
+const letter=`xxxxxx
+xxxxx
+xxxx`;
+
+function openLetter(){
+
+document.getElementById("envelope").style.display="none";
+
+document.getElementById("letterContent").style.display="block";
+
+typeLetter();
+
+}
+
+function typeLetter(){
+
+const target=document.getElementById("typingText");
+
+let i=0;
+
+const timer=setInterval(()=>{
+
+target.innerHTML+=letter.charAt(i);
+
+i++;
+
+if(i>=letter.length){
+
+clearInterval(timer);
+
+document.getElementById("letterContinue").style.display="block";
+
+}
+
+},35);
+
+}
+
+function goToGallery(){
+
+showScreen("galleryScreen");
+
+}
+const galleryImages=[
+"static/images/gallery/Photo1.jpg",
+"static/images/gallery/Photo2.jpg",
+"static/images/gallery/Photo3.jpg"
+];
+
+const galleryCaptions=[
+"Our Beautiful Memory ❤️",
+"Smiles That Last Forever 😊",
+"Together Always 🤗"
+];
+
+let currentPhoto=0;
+
+function updateGallery(){
+
+document.getElementById("galleryImage").src=galleryImages[currentPhoto];
+
+document.getElementById("galleryCaption").innerHTML=galleryCaptions[currentPhoto];
+
+document.getElementById("galleryCounter").innerHTML=(currentPhoto+1)+" / "+galleryImages.length;
+
+}
+
+function nextPhoto(){
+
+if(currentPhoto<galleryImages.length-1){
+
+currentPhoto++;
+
+updateGallery();
+
+}
+
+}
+
+function previousPhoto(){
+
+if(currentPhoto>0){
+
+currentPhoto--;
+
+updateGallery();
+
+}
+
+}
+
+function goToTimeline(){
+
+showScreen("timelineScreen");
+
+}
+
+function goToGift(){
+
+showScreen("giftScreen");
+
+}
+function openGift(){
+
+document.getElementById("giftBox").style.display="none";
+
+document.getElementById("giftMessage").style.display="block";
+
+}
+
+function goToVideo(){
+
+showScreen("videoScreen");
+
+const video=document.getElementById("birthdayVideo");
+
+video.currentTime=0;
+
+video.play().catch(()=>{});
+
+}
+
+function replayVideo(){
+
+const video=document.getElementById("birthdayVideo");
+
+video.currentTime=0;
+
+video.play();
+
+}
+
+function goToHug(){
+
+showScreen("hugScreen");
 
 }

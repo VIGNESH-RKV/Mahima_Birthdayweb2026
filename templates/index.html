@@ -95,7 +95,283 @@ Unlock Surprise
 
 </section>
 
-<script src="{{ url_for('static',filename='js/app.js') }}"></script>
+<section id="loadingScreen" class="screen">
 
+<div class="card">
+
+<img id="loadingPuppy"
+src="{{ url_for('static',filename='images/puppy_love.png') }}"
+style="width:180px;margin-bottom:20px;">
+
+<h2>Preparing Your Surprise...</h2>
+
+<p id="loadingText">
+Collecting beautiful memories...
+</p>
+
+<div class="progressBar">
+
+<div id="progressFill"></div>
+
+</div>
+
+<p id="progressValue">0%</p>
+
+</div>
+
+</section>
+<section id="birthdayScreen" class="screen">
+
+<div class="card birthday-card">
+
+<img id="cakeImage"
+src="{{ url_for('static',filename='images/cake.png') }}"
+class="cake">
+
+<h1>🎉 Happy Birthday 🎉</h1>
+
+<h2>Alla Mahima Kumari</h2>
+
+<h3>Our Lovely Pattu ❤️</h3>
+
+<p class="birthdayMessage">
+
+May your smile always shine brighter than the stars.
+
+May all your dreams come true.
+
+Have a wonderful birthday!
+
+</p>
+
+<button onclick="goToLetter()">
+
+Open Your Letter 💌
+
+</button>
+
+</div>
+
+</section>
+<section id="letterScreen" class="screen">
+
+<div class="card letterCard">
+
+<img
+id="envelope"
+class="envelope"
+src="{{ url_for('static',filename='images/envelope.png') }}"
+onclick="openLetter()">
+
+<div id="letterContent" class="letterContent">
+
+<h2>Dear Pattu ❤️</h2>
+
+<p id="typingText"></p>
+    <p id="scrollHint">
+⬇ Scroll down to continue ⬇
+</p>
+
+<button id="letterContinue" onclick="goToGallery()">
+
+Continue ➜
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<section id="galleryScreen" class="screen">
+
+<div class="card galleryCard">
+
+<h1>Beautiful Memories ❤️</h1>
+
+<img id="galleryImage"
+src="{{ url_for('static',filename='images/gallery/Photo1.jpg') }}">
+
+<h3 id="galleryCaption">
+
+Our Beautiful Memory ❤️
+
+</h3>
+
+<p id="galleryCounter">
+
+1 / 3
+
+</p>
+
+<div class="galleryButtons">
+
+<button onclick="previousPhoto()">
+
+⬅ Previous
+
+</button>
+
+<button onclick="nextPhoto()">
+
+Next ➜
+
+</button>
+
+</div>
+
+<button id="galleryContinue"
+onclick="goToTimeline()">
+
+Continue ❤️
+
+</button>
+
+</div>
+
+</section>
+<section id="timelineScreen" class="screen">
+
+<div class="card timelineCard">
+
+<h1>Our Beautiful Journey ❤️</h1>
+
+<div class="timeline">
+
+<div class="timelineItem">
+
+<div class="timelineDot"></div>
+
+<div class="timelineContent">
+
+<h3>🌸 First Memory</h3>
+
+<p>The beginning of countless beautiful memories together.</p>
+
+</div>
+
+</div>
+
+<div class="timelineItem">
+
+<div class="timelineDot"></div>
+
+<div class="timelineContent">
+
+<h3>😊 Endless Smiles</h3>
+
+<p>Every smile became a precious memory to cherish forever.</p>
+
+</div>
+
+</div>
+
+<div class="timelineItem">
+
+<div class="timelineDot"></div>
+
+<div class="timelineContent">
+
+<h3>🎂 Today</h3>
+
+<p>Celebrating another wonderful year of your beautiful life.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<button onclick="goToGift()">
+
+Continue 🎁
+
+</button>
+
+</div>
+
+</section>
+<section id="giftScreen" class="screen">
+
+<div class="card giftCard">
+
+<h1>A Special Gift For You 🎁</h1>
+
+<img
+id="giftBox"
+class="giftImage"
+src="{{ url_for('static',filename='images/gift.png') }}"
+onclick="openGift()">
+
+<div id="giftMessage" class="giftMessage">
+
+<h2>🎉 Surprise! 🎉</h2>
+
+<p>
+
+May every dream you have come true.
+
+May happiness always stay with you.
+
+You deserve all the love in this world.
+
+Happy Birthday Pattu ❤️
+
+</p>
+
+<button onclick="goToVideo()">
+
+Watch Special Video 🎥
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<section id="videoScreen" class="screen">
+
+<div class="card videoCard">
+
+<h1>🎥 A Special Video For You</h1>
+
+<video
+id="birthdayVideo"
+controls
+playsinline
+preload="metadata">
+
+<source src="{{ url_for('static',filename='videos/birthday.mp4') }}" type="video/mp4">
+
+Your browser doesn't support video.
+
+</video>
+
+<div class="videoButtons">
+
+<button onclick="replayVideo()">
+
+🔄 Replay
+
+</button>
+
+<button onclick="goToHug()">
+
+Continue 🤗
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<script src="{{ url_for('static',filename='js/app.js') }}"></script>
 </body>
 </html>

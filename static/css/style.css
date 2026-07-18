@@ -52,7 +52,8 @@ height:100%;
 display:none;
 justify-content:center;
 align-items:center;
-padding:20px;
+padding:30px;
+overflow-y:auto;
 }
 
 .active{
@@ -265,6 +266,387 @@ transform:translateY(-120px) rotate(360deg);
 
 opacity:0;
 
+}
+
+}
+
+.progressBar{
+width:100%;
+height:22px;
+background:rgba(255,255,255,.3);
+border-radius:30px;
+overflow:hidden;
+margin-top:25px;
+margin-bottom:20px;
+}
+
+#progressFill{
+width:0%;
+height:100%;
+background:linear-gradient(90deg,#ff1493,#ff6fb5,#ffd700);
+border-radius:30px;
+transition:width .2s linear;
+}
+
+#progressValue{
+font-size:24px;
+font-weight:600;
+color:white;
+margin-top:10px;
+}
+
+#loadingText{
+min-height:40px;
+font-size:20px;
+}
+
+.birthday-card{
+text-align:center;
+animation:zoomIn 1.2s ease;
+}
+
+.cake{
+width:180px;
+margin-bottom:20px;
+animation:cakeFloat 3s ease-in-out infinite;
+}
+
+.birthday-card h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.birthday-card h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.birthday-card h3{
+font-size:24px;
+color:#fff;
+margin-bottom:25px;
+}
+
+.birthdayMessage{
+font-size:20px;
+line-height:34px;
+margin-bottom:30px;
+}
+
+@keyframes cakeFloat{
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
+}
+
+@keyframes zoomIn{
+0%{
+opacity:0;
+transform:scale(.7);
+}
+100%{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.confetti{
+position:fixed;
+top:-20px;
+width:10px;
+height:10px;
+border-radius:50%;
+animation:fall linear forwards;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-50px) rotate(0deg);
+}
+100%{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+
+.letterCard{
+text-align:center;
+}
+
+.envelope{
+width:220px;
+cursor:pointer;
+transition:.5s;
+animation:floatEnvelope 3s ease-in-out infinite;
+}
+
+.envelope:hover{
+transform:scale(1.08);
+}
+
+@keyframes floatEnvelope{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+.letterContent{
+display:none;
+margin-top:20px;
+background:#fffdf7;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+color:#333;
+animation:slideLetter .8s ease;
+max-height:70vh;
+overflow-y:auto;
+}
+
+.letterContent h2{
+color:#ff1493;
+margin-bottom:20px;
+font-size:34px;
+}
+
+
+@keyframes slideLetter{
+0%{
+opacity:0;
+transform:translateY(50px);
+}
+100%{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+#typingText{
+font-size:20px;
+line-height:38px;
+color:#444;
+white-space:pre-line;
+text-align:left;
+min-height:250px;
+margin-bottom:30px;
+}
+
+#letterContinue{
+display:none;
+position:sticky;
+bottom:0;
+margin-top:20px;
+}
+#scrollHint{
+text-align:center;
+color:#ff1493;
+font-weight:600;
+margin-top:10px;
+margin-bottom:20px;
+animation:blink 1.2s infinite;
+}
+
+@keyframes blink{
+50%{
+opacity:.3;
+}
+}
+.galleryCard{
+text-align:center;
+}
+
+#galleryImage{
+width:100%;
+max-width:520px;
+height:360px;
+object-fit:cover;
+border-radius:25px;
+margin:25px auto;
+display:block;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+transition:.5s;
+}
+
+#galleryImage:hover{
+transform:scale(1.02);
+}
+
+#galleryCaption{
+color:white;
+font-size:26px;
+margin-top:20px;
+}
+
+#galleryCounter{
+margin:20px;
+font-size:18px;
+color:#fff;
+}
+
+.galleryButtons{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-bottom:25px;
+flex-wrap:wrap;
+}
+
+.galleryButtons button{
+width:180px;
+}
+
+#galleryContinue{
+margin-top:10px;
+}
+.timelineCard{
+text-align:left;
+max-height:80vh;
+overflow-y:auto;
+}
+
+.timeline{
+position:relative;
+margin:40px 0;
+padding-left:35px;
+border-left:4px solid rgba(255,255,255,.5);
+}
+
+.timelineItem{
+position:relative;
+margin-bottom:40px;
+animation:fadeUp .8s ease;
+}
+
+.timelineDot{
+position:absolute;
+left:-47px;
+top:8px;
+width:18px;
+height:18px;
+background:#ff1493;
+border:4px solid white;
+border-radius:50%;
+box-shadow:0 0 20px rgba(255,20,147,.5);
+}
+
+.timelineContent{
+background:rgba(255,255,255,.18);
+padding:20px;
+border-radius:18px;
+backdrop-filter:blur(10px);
+}
+
+.timelineContent h3{
+color:white;
+margin-bottom:10px;
+font-size:24px;
+}
+
+.timelineContent p{
+color:white;
+font-size:18px;
+line-height:30px;
+margin:0;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.giftCard{
+text-align:center;
+}
+
+.giftImage{
+width:220px;
+cursor:pointer;
+margin:30px auto;
+display:block;
+transition:.5s;
+animation:giftFloat 3s ease-in-out infinite;
+}
+
+.giftImage:hover{
+transform:scale(1.08) rotate(5deg);
+}
+
+@keyframes giftFloat{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+.giftMessage{
+display:none;
+margin-top:25px;
+background:rgba(255,255,255,.18);
+padding:25px;
+border-radius:20px;
+animation:giftOpen .8s ease;
+}
+
+.giftMessage h2{
+color:#ffd700;
+margin-bottom:15px;
+}
+
+.giftMessage p{
+color:white;
+font-size:20px;
+line-height:34px;
+}
+
+@keyframes giftOpen{
+from{
+opacity:0;
+transform:scale(.8);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+.videoCard{
+text-align:center;
+}
+
+#birthdayVideo{
+width:100%;
+max-width:750px;
+border-radius:20px;
+margin:25px auto;
+display:block;
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+background:black;
+}
+
+.videoButtons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.videoButtons button{
+width:220px;
+}
+
+@media(max-width:768px){
+
+.videoButtons{
+flex-direction:column;
+align-items:center;
+}
+
+.videoButtons button{
+width:100%;
 }
 
 }
