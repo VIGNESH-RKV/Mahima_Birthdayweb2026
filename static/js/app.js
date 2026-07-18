@@ -384,3 +384,66 @@ function goToHug(){
 showScreen("hugScreen");
 
 }
+function goToMoon(){
+
+showScreen("moonScreen");
+
+}
+function goToFinale(){
+
+showScreen("finalScreen");
+
+startFinalCelebration();
+
+}
+function startFinalCelebration(){
+
+startConfetti();
+
+createFireworks();
+
+}
+
+function createFireworks(){
+
+const colors=[
+"#ff1493",
+"#ffd700",
+"#00e5ff",
+"#7CFC00",
+"#ffffff"
+];
+
+for(let i=0;i<40;i++){
+
+setTimeout(()=>{
+
+const fire=document.createElement("div");
+
+fire.className="firework";
+
+fire.style.left=Math.random()*100+"%";
+
+fire.style.top=(10+Math.random()*70)+"%";
+
+fire.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+document.body.appendChild(fire);
+
+setTimeout(()=>{
+
+fire.remove();
+
+},1800);
+
+},i*180);
+
+}
+
+}
+
+function restartJourney(){
+
+location.reload();
+
+}
