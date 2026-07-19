@@ -13,7 +13,7 @@ function createStars(){
 
 const stars=document.getElementById("stars");
 
-for(let i=0;i<120;i++){
+for(let i=0;i<220;i++){
 
 const star=document.createElement("div");
 
@@ -41,7 +41,29 @@ screen.classList.remove("active");
 
 });
 
-document.getElementById(id).classList.add("active");
+const next=document.getElementById(id);
+
+next.classList.add("active");
+
+next.animate([
+
+{
+opacity:0,
+transform:"scale(.95)"
+},
+
+{
+opacity:1,
+transform:"scale(1)"
+}
+
+],{
+
+duration:700,
+
+easing:"ease"
+
+});
 
 }
 
@@ -56,7 +78,6 @@ await music.play();
 showScreen("puppyScreen");
 
 }
-
 function login(){
 
 const user=document.getElementById("username").value.trim();
@@ -67,13 +88,13 @@ const puppy=document.getElementById("loginPuppy");
 
 const error=document.getElementById("error");
 
-if(user===USERNAME&&pass===PASSWORD){
+if(user===USERNAME && pass===PASSWORD){
 
 puppy.src="static/images/puppy_love.png";
 
-error.style.color="#90ee90";
+error.style.color="#2e7d32";
 
-error.innerHTML="Yay! Welcome Pattu ❤️";
+error.innerHTML="🎉 Yay! Welcome back, My Favourite Akka ❤️";
 
 setTimeout(()=>{
 
@@ -87,21 +108,21 @@ else{
 
 puppy.src="static/images/puppy_angry.png";
 
-error.style.color="#ffd700";
+error.style.color="#d81b60";
 
-error.innerHTML="Hmm... I don't think you're Pattu!";
+error.innerHTML="🐶 Oops! That doesn't sound like my Princess. Please try again. ❤️";
 
 document.querySelector("#loginScreen .card").animate([
 
-{transform:"translateX(-10px)"},
-{transform:"translateX(10px)"},
-{transform:"translateX(-10px)"},
-{transform:"translateX(10px)"},
+{transform:"translateX(-12px)"},
+{transform:"translateX(12px)"},
+{transform:"translateX(-12px)"},
+{transform:"translateX(12px)"},
 {transform:"translateX(0px)"}
 
 ],{
 
-duration:450
+duration:500
 
 });
 
@@ -111,11 +132,13 @@ puppy.src="static/images/puppy_happy.png";
 
 error.innerHTML="";
 
-},2000);
+},2200);
 
 }
 
 }
+
+
 function goToLogin(){
 
 showScreen("loginScreen");
@@ -242,28 +265,166 @@ confetti.remove();
 }
 
 function goToLetter(){
-
 showScreen("letterScreen");
-
+document.getElementById("envelope").style.display="block";
+document.getElementById("letterContent").style.display="none";
+document.getElementById("typingText").innerHTML="";
+document.getElementById("letterContinue").classList.remove("show");
 }
 
-const letter=`xxxxxx
-xxxxx
-xxxx`;
+
+
+
+
+
+
 
 function openLetter(){
-
 document.getElementById("envelope").style.display="none";
-
 document.getElementById("letterContent").style.display="block";
-
 typeLetter();
-
 }
+
+const letter=`Hi My Dearest Akka ❤️,
+
+Happy Birthday to the most precious person my life unexpectedly gifted me.
+
+Sometimes I sit quietly and think... Out of millions of people in this world, how did our paths cross?
+
+You were born in Andhra Pradesh.
+I was born in Tamil Nadu.
+
+Two different states.
+Two different families.
+Two completely different lives.
+
+Yet destiny had a beautiful plan.
+
+Wipro gave us a project, but God gave me an Akka.
+
+For project reasons I moved from Tamil Nadu to Hyderabad. I thought I was only changing my work location.
+
+Little did I know... I was walking towards one of the greatest blessings of my life.
+
+I still don't know how we became so close.
+
+There wasn't a plan.
+There wasn't a reason.
+
+It just happened...
+Slowly...
+Naturally...
+Beautifully...
+
+Today, when I think about my life, I realize that you became much more than a colleague and much more than a friend.
+
+You became my Akka.
+
+Not by blood...
+Not by birth...
+But by heart.
+
+People often say,
+"Relationships are created by blood."
+
+I don't completely believe that anymore.
+
+Because you proved that some relationships are written directly by God.
+
+They don't need blood.
+They only need love, care, trust, understanding and a pure heart.
+
+Whenever I needed someone, you were there.
+
+Whenever I felt low, your words made me stronger.
+
+Whenever I smiled, you smiled with me.
+
+Whenever I achieved something, you celebrated it like your own.
+
+Those moments may have looked small, but they became priceless memories in my heart.
+
+Some people stay in our lives for a season.
+
+Some stay for a few years.
+
+But very few people quietly become a permanent part of our heart.
+
+You are one of them.
+
+Today, you don't just have a place in my contacts.
+
+You have a place in my heart.
+
+And no matter what happens in life...
+
+No distance...
+No city...
+No company...
+No time...
+
+Can ever replace that place.
+
+Life may take us to different projects, different companies or even different countries.
+
+But one thing I pray never changes...
+
+Our beautiful bond.
+
+Thank you for every smile.
+
+Thank you for every conversation.
+
+Thank you for every piece of advice.
+
+Thank you for treating me like your own Thambi.
+
+I honestly don't know what good thing I did in life to deserve an Akka like you.
+
+On your special day, I don't wish for expensive gifts or grand celebrations.
+
+I simply pray...
+
+May your smile never fade.
+
+May your heart always stay peaceful.
+
+May happiness follow you wherever you go.
+
+May success walk beside you.
+
+May every dream in your heart become reality.
+
+May God always protect you, guide you and bless you with endless happiness.
+
+And I want to make you one promise...
+
+As long as I breathe...
+
+You'll always have a Thambi who silently prays for your happiness.
+
+No matter where life takes us...
+
+No one can ever replace the place you've earned in my heart.
+
+Happy Birthday once again, My Dearest Akka. ❤️
+
+With endless love,
+gratitude,
+respect,
+and countless beautiful memories...
+
+Always Your Loving Thambi,
+
+❤️ Vignesh R`;
+
+
 
 function typeLetter(){
 
 const target=document.getElementById("typingText");
+
+target.innerHTML="";
 
 let i=0;
 
@@ -277,7 +438,11 @@ if(i>=letter.length){
 
 clearInterval(timer);
 
-document.getElementById("letterContinue").style.display="block";
+setTimeout(()=>{
+
+document.getElementById("letterContinue").classList.add("show");
+
+},800);
 
 }
 
@@ -285,7 +450,12 @@ document.getElementById("letterContinue").style.display="block";
 
 }
 
+
 function goToGallery(){
+
+currentPhoto=0;
+
+updateGallery();
 
 showScreen("galleryScreen");
 
@@ -348,14 +518,28 @@ function goToGift(){
 
 showScreen("giftScreen");
 
+document.getElementById("giftBox").style.display="block";
+
+document.getElementById("giftMessage").style.display="none";
+
+document.getElementById("giftContinue").classList.remove("show");
+
 }
+
 function openGift(){
 
 document.getElementById("giftBox").style.display="none";
 
 document.getElementById("giftMessage").style.display="block";
 
+setTimeout(()=>{
+
+document.getElementById("giftContinue").classList.add("show");
+
+},1200);
+
 }
+
 
 function goToVideo(){
 
@@ -447,3 +631,27 @@ function restartJourney(){
 location.reload();
 
 }
+
+function createPetals(){
+
+for(let i=0;i<25;i++){
+
+const petal=document.createElement("div");
+
+petal.className="petal";
+
+petal.innerHTML="🌸";
+
+petal.style.left=Math.random()*100+"%";
+
+petal.style.animationDuration=(8+Math.random()*6)+"s";
+
+petal.style.animationDelay=Math.random()*6+"s";
+
+document.body.appendChild(petal);
+
+}
+
+}
+
+createPetals();

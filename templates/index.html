@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
@@ -18,31 +18,40 @@
 <source src="{{ url_for('static',filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
 </audio>
 
+<div id="background">
+    <div id="balloons">
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+<div class="balloon b5"></div>
+<div class="balloon b6"></div>
+    </div>
+
+<div class="gradientBlob blob1"></div>
+
+<div class="gradientBlob blob2"></div>
+
+<div class="gradientBlob blob3"></div>
+
 <div id="stars"></div>
-
-<section id="welcomeScreen" class="screen active">
-
-<div class="card">
-
-<h1>Happy<br>Birthday</h1>
-
-<h2>Alla Mahima Kumari</h2>
-
-<p>
-
-A magical birthday journey has been created especially for you.
-
-Click below and let the surprise begin.
-
-</p>
-
-<button id="beginBtn">
-Begin Journey ❤️
-</button>
 
 </div>
 
+<section id="welcomeScreen" class="screen active">
+<div class="card">
+<h1>Happy<br>Birthday</h1>
+<h2>Alla Mahima Kumari</h2>
+<p>
+A magical birthday journey has been created especially for you.
+Click below and let the surprise begin.
+</p>
+<button id="beginBtn">
+Begin Journey ❤️
+</button>
+</div>
 </section>
+
 <section id="puppyScreen" class="screen">
 
 <div class="card puppy-card">
@@ -77,16 +86,50 @@ Continue →
 
 <div class="card">
 
-<h1>Login</h1>
-<img id="loginPuppy"
+<img
+id="loginPuppy"
 src="{{ url_for('static',filename='images/puppy_happy.png') }}"
 style="width:170px;margin-bottom:20px;">
-<input id="username" placeholder="Enter Your Name">
 
-<input id="password" type="password" placeholder="Password">
+<h1>🐶 Puppy Security Check</h1>
+
+<p class="loginIntro">
+
+Hi Pattu... ❤️
+
+<br><br>
+
+Before I reveal your birthday surprise,
+
+I just want to make sure
+
+my favourite Akka is really here.
+
+<br><br>
+
+Just answer these two little questions,
+
+and I'll happily unlock your magical birthday journey. ✨
+
+</p>
+
+<label>👑 Princess Name</label>
+
+<input
+id="username"
+placeholder="Type your beautiful name...">
+
+<label>🎂 Princess Birthday Secret</label>
+
+<input
+id="password"
+type="password"
+placeholder="DDMM">
 
 <button onclick="login()">
-Unlock Surprise
+
+Unlock My Surprise ❤️
+
 </button>
 
 <p id="error"></p>
@@ -94,6 +137,8 @@ Unlock Surprise
 </div>
 
 </section>
+
+
 
 <section id="loadingScreen" class="screen">
 
@@ -151,11 +196,40 @@ Open Your Letter 💌
 </button>
 
 </div>
-
 </section>
+
+
 <section id="letterScreen" class="screen">
 
 <div class="card letterCard">
+
+<h1>💌 A Little Piece of My Heart</h1>
+
+<p class="letterIntro">
+
+Hi Pattu... ❤️
+
+<br><br>
+
+Before we continue this beautiful birthday journey,
+there's something I've been waiting to tell you.
+
+<br><br>
+
+Every smile, every memory and every beautiful moment
+reminded me how special you are.
+
+<br><br>
+
+So I wrote a small letter...
+not with a pen,
+but with my heart.
+
+<br><br>
+
+✨ Click the letter below and discover what's waiting for you. ✨
+
+</p>
 
 <img
 id="envelope"
@@ -163,19 +237,19 @@ class="envelope"
 src="{{ url_for('static',filename='images/envelope.png') }}"
 onclick="openLetter()">
 
+<!-- Paste here -->
+<p class="clickHint">
+👇 Tap the letter to open it 👇
+</p>
+
 <div id="letterContent" class="letterContent">
 
 <h2>Dear Pattu ❤️</h2>
 
 <p id="typingText"></p>
-    <p id="scrollHint">
-⬇ Scroll down to continue ⬇
-</p>
 
-<button id="letterContinue" onclick="goToGallery()">
-
+<button id="letterContinue" class="hiddenButton" onclick="goToGallery()">
 Continue ➜
-
 </button>
 
 </div>
@@ -183,14 +257,37 @@ Continue ➜
 </div>
 
 </section>
+
+
 <section id="galleryScreen" class="screen">
 
 <div class="card galleryCard">
 
-<h1>Beautiful Memories ❤️</h1>
+<h1>📸 Beautiful Memories ❤️</h1>
 
-<img id="galleryImage"
+<div class="galleryViewer">
+
+<button
+class="navButton leftButton"
+onclick="previousPhoto()">
+
+❮
+
+</button>
+
+<img
+id="galleryImage"
 src="{{ url_for('static',filename='images/gallery/Photo1.jpg') }}">
+
+<button
+class="navButton rightButton"
+onclick="nextPhoto()">
+
+❯
+
+</button>
+
+</div>
 
 <h3 id="galleryCaption">
 
@@ -204,23 +301,8 @@ Our Beautiful Memory ❤️
 
 </p>
 
-<div class="galleryButtons">
-
-<button onclick="previousPhoto()">
-
-⬅ Previous
-
-</button>
-
-<button onclick="nextPhoto()">
-
-Next ➜
-
-</button>
-
-</div>
-
-<button id="galleryContinue"
+<button
+id="galleryContinue"
 onclick="goToTimeline()">
 
 Continue ❤️
@@ -230,6 +312,9 @@ Continue ❤️
 </div>
 
 </section>
+
+
+
 <section id="timelineScreen" class="screen">
 
 <div class="card timelineCard">
@@ -295,7 +380,23 @@ Continue 🎁
 
 <div class="card giftCard">
 
-<h1>A Special Gift For You 🎁</h1>
+<h1>🎁 A Special Gift Just For You</h1>
+
+<p class="giftIntro">
+
+Hi Pattu... ❤️
+
+<br><br>
+
+You've opened every surprise with a beautiful smile.
+
+Now it's time to receive something specially prepared for you.
+
+<br><br>
+
+🎁 Click the gift box below and unwrap your surprise.
+
+</p>
 
 <img
 id="giftBox"
@@ -307,31 +408,39 @@ onclick="openGift()">
 
 <h2>🎉 Surprise! 🎉</h2>
 
+<img
+id="giftQR"
+src="{{ url_for('static',filename='images/qrcode.png') }}">
+
 <p>
 
-May every dream you have come true.
+This QR Code is my little birthday gift for you.
 
-May happiness always stay with you.
+I hope it brings a beautiful smile to your face.
 
-You deserve all the love in this world.
+Every time you see it,
 
-Happy Birthday Pattu ❤️
+remember that your Thambi always wishes
+
+for your happiness.
+
+❤️ Happy Birthday Once Again ❤️
 
 </p>
 
-<button onclick="goToVideo()">
-
-Watch Special Video 🎥
-
+<button
+id="giftContinue"
+class="hiddenButton"
+onclick="goToVideo()">
+Continue ➜
 </button>
-
 </div>
-
 </div>
-
 </section>
-<section id="videoScreen" class="screen">
 
+
+
+<section id="videoScreen" class="screen">
 <div class="card videoCard">
 
 <h1>🎥 A Special Video For You</h1>
@@ -488,11 +597,7 @@ Lots of Love ❤️
 
 </section>
 
-
-
-
-
-
 <script src="{{ url_for('static',filename='js/app.js') }}"></script>
+
 </body>
 </html>
