@@ -1,137 +1,603 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Happy Birthday Pattu ❤️</title>
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
 </head>
 
 <body>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-    <source src="{{ url_for('static', filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
+<audio id="bgMusic" loop preload="auto">
+<source src="{{ url_for('static',filename='audio/birthday_song.mp3') }}" type="audio/mpeg">
 </audio>
 
-<!-- Login Screen -->
-<section id="loginScreen" class="screen active">
-
-    <div class="card">
-
-        <h1>🎂 Birthday Surprise</h1>
-
-        <h2>For Pattu ❤️</h2>
-
-        <input
-            type="text"
-            id="username"
-            placeholder="Enter Name">
-
-        <input
-            type="password"
-            id="password"
-            placeholder="Password">
-
-        <button onclick="login()">
-            Enter ❤️
-        </button>
-
-        <p id="error"></p>
-
+<div id="background">
+    <div id="balloons">
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+<div class="balloon b5"></div>
+<div class="balloon b6"></div>
     </div>
 
+<div class="gradientBlob blob1"></div>
+
+<div class="gradientBlob blob2"></div>
+
+<div class="gradientBlob blob3"></div>
+
+<div id="stars"></div>
+
+</div>
+
+<section id="welcomeScreen" class="screen active">
+<div class="card">
+<h1>Happy<br>Birthday</h1>
+<h2>Alla Mahima Kumari</h2>
+<p>
+A magical birthday journey has been created especially for you.
+Click below and let the surprise begin.
+</p>
+<button id="beginBtn">
+Begin Journey ❤️
+</button>
+</div>
 </section>
 
-<!-- Loading Screen -->
-<section id="loadingScreen" class="screen">
-
-    <div class="card">
-
-        <h1>Loading...</h1>
-
-        <div class="loader"></div>
-
-    </div>
-
-</section>
-
-<!-- Countdown Screen -->
-<section id="countdownScreen" class="screen">
-
-    <div class="card">
-
-        <h1>Get Ready ❤️</h1>
-
-        <h2 id="countNumber">3</h2>
-
-        <p>A special surprise is waiting for you...</p>
-
-    </div>
-
-</section>
-<!-- Puppy Story Screen -->
 <section id="puppyScreen" class="screen">
 
-    <div class="card">
+<div class="card puppy-card">
 
-        <img id="puppyImage"
-        src="{{ url_for('static', filename='images/puppy_happy.png') }}">
+<img
+id="puppyImage"
+src="{{ url_for('static',filename='images/puppy_happy.png') }}">
 
-        <h1 id="puppyTitle">
+<h2>Hello... ❤️</h2>
 
-            Hey Pattu ❤️
+<p id="puppyText">
 
-        </h1>
+I'm Pattu's little birthday helper.
 
-        <p id="puppyText">
+Before opening the surprise,
 
-            I made something special just for you.
+I need to make sure you're really her.
 
-            Do you want to see it?
+</p>
 
-        </p>
+<button onclick="goToLogin()">
 
-        <div id="choiceButtons">
+Continue →
 
-            <button onclick="yesClicked()">
+</button>
 
-                ❤️ YES
+</div>
 
-            </button>
+</section>
 
-            <button onclick="noClicked()">
+<section id="loginScreen" class="screen">
 
-                🙈 NO
+<div class="card">
 
-            </button>
+<img
+id="loginPuppy"
+src="{{ url_for('static',filename='images/puppy_happy.png') }}"
+style="width:170px;margin-bottom:20px;">
 
-        </div>
+<h1>🐶 Puppy Security Check</h1>
 
-        <button
-        id="continueBtn"
-        style="display:none;"
-        onclick="startBirthday()">
+<p class="loginIntro">
 
-            Continue ❤️
+Hi Pattu... ❤️
 
-        </button>
+<br><br>
 
-    </div>
+Before I reveal your birthday surprise,
+
+I just want to make sure
+
+my favourite Akka is really here.
+
+<br><br>
+
+Just answer these two little questions,
+
+and I'll happily unlock your magical birthday journey. ✨
+
+</p>
+
+<label>👑 Princess Name</label>
+
+<input
+id="username"
+placeholder="Type your beautiful name...">
+
+<label>🎂 Princess Birthday Secret</label>
+
+<input
+id="password"
+type="password"
+placeholder="DDMM">
+
+<button onclick="login()">
+
+Unlock My Surprise ❤️
+
+</button>
+
+<p id="error"></p>
+
+</div>
 
 </section>
 
 
 
+<section id="loadingScreen" class="screen">
 
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<div class="card">
+
+<img id="loadingPuppy"
+src="{{ url_for('static',filename='images/puppy_love.png') }}"
+style="width:180px;margin-bottom:20px;">
+
+<h2>Preparing Your Surprise...</h2>
+
+<p id="loadingText">
+Collecting beautiful memories...
+</p>
+
+<div class="progressBar">
+
+<div id="progressFill"></div>
+
+</div>
+
+<p id="progressValue">0%</p>
+
+</div>
+
+</section>
+<section id="birthdayScreen" class="screen">
+
+<div class="card birthday-card">
+
+<img id="cakeImage"
+src="{{ url_for('static',filename='images/cake.png') }}"
+class="cake">
+
+<h1>🎉 Happy Birthday 🎉</h1>
+
+<h2>Alla Mahima Kumari</h2>
+
+<h3>Our Lovely Pattu ❤️</h3>
+
+<p class="birthdayMessage">
+
+May your smile always shine brighter than the stars.
+
+May all your dreams come true.
+
+Have a wonderful birthday!
+
+</p>
+
+<button onclick="goToLetter()">
+
+Open Your Letter 💌
+
+</button>
+
+</div>
+</section>
+
+
+<section id="letterScreen" class="screen">
+
+<div class="card letterCard">
+
+<h1>💌 A Little Piece of My Heart</h1>
+
+<p class="letterIntro">
+
+Hi Pattu... ❤️
+
+<br><br>
+
+Before we continue this beautiful birthday journey,
+there's something I've been waiting to tell you.
+
+<br><br>
+
+Every smile, every memory and every beautiful moment
+reminded me how special you are.
+
+<br><br>
+
+So I wrote a small letter...
+not with a pen,
+but with my heart.
+
+<br><br>
+
+✨ Click the letter below and discover what's waiting for you. ✨
+
+</p>
+
+<img
+id="envelope"
+class="envelope"
+src="{{ url_for('static',filename='images/envelope.png') }}"
+onclick="openLetter()">
+
+<!-- Paste here -->
+<p class="clickHint">
+👇 Tap the letter to open it 👇
+</p>
+
+<div id="letterContent" class="letterContent">
+
+<h2>Dear Pattu ❤️</h2>
+
+<p id="typingText"></p>
+
+<button id="letterContinue" class="hiddenButton" onclick="goToGallery()">
+Continue ➜
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="galleryScreen" class="screen">
+
+<div class="card galleryCard">
+
+<h1>📸 Beautiful Memories ❤️</h1>
+
+<div class="galleryViewer">
+
+<button
+class="navButton leftButton"
+onclick="previousPhoto()">
+
+❮
+
+</button>
+
+<img
+id="galleryImage"
+src="{{ url_for('static',filename='images/gallery/Photo1.jpg') }}">
+
+<button
+class="navButton rightButton"
+onclick="nextPhoto()">
+
+❯
+
+</button>
+
+</div>
+
+<h3 id="galleryCaption">
+
+Our Beautiful Memory ❤️
+
+</h3>
+
+<p id="galleryCounter">
+
+1 / 3
+
+</p>
+
+<button
+id="galleryContinue"
+onclick="goToTimeline()">
+
+Continue ❤️
+
+</button>
+
+</div>
+
+</section>
+
+
+
+<section id="timelineScreen" class="screen">
+
+<div class="card timelineCard">
+
+<h1>Our Beautiful Journey ❤️</h1>
+
+<div class="timeline">
+
+<div class="timelineItem">
+
+<div class="timelineDot"></div>
+
+<div class="timelineContent">
+
+<h3>🌸 First Memory</h3>
+
+<p>The beginning of countless beautiful memories together.</p>
+
+</div>
+
+</div>
+
+<div class="timelineItem">
+
+<div class="timelineDot"></div>
+
+<div class="timelineContent">
+
+<h3>😊 Endless Smiles</h3>
+
+<p>Every smile became a precious memory to cherish forever.</p>
+
+</div>
+
+</div>
+
+<div class="timelineItem">
+
+<div class="timelineDot"></div>
+
+<div class="timelineContent">
+
+<h3>🎂 Today</h3>
+
+<p>Celebrating another wonderful year of your beautiful life.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<button onclick="goToGift()">
+
+Continue 🎁
+
+</button>
+
+</div>
+
+</section>
+<section id="giftScreen" class="screen">
+
+<div class="card giftCard">
+
+<h1>🎁 A Special Gift Just For You</h1>
+
+<p class="giftIntro">
+
+Hi Pattu... ❤️
+
+<br><br>
+
+You've opened every surprise with a beautiful smile.
+
+Now it's time to receive something specially prepared for you.
+
+<br><br>
+
+🎁 Click the gift box below and unwrap your surprise.
+
+</p>
+
+<img
+id="giftBox"
+class="giftImage"
+src="{{ url_for('static',filename='images/gift.png') }}"
+onclick="openGift()">
+
+<div id="giftMessage" class="giftMessage">
+
+<h2>🎉 Surprise! 🎉</h2>
+
+<img
+id="giftQR"
+src="{{ url_for('static',filename='images/qrcode.png') }}">
+
+<p>
+
+This QR Code is my little birthday gift for you.
+
+I hope it brings a beautiful smile to your face.
+
+Every time you see it,
+
+remember that your Thambi always wishes
+
+for your happiness.
+
+❤️ Happy Birthday Once Again ❤️
+
+</p>
+
+<button
+id="giftContinue"
+class="hiddenButton"
+onclick="goToVideo()">
+Continue ➜
+</button>
+</div>
+</div>
+</section>
+
+
+
+<section id="videoScreen" class="screen">
+<div class="card videoCard">
+
+<h1>🎥 A Special Video For You</h1>
+
+<video
+id="birthdayVideo"
+controls
+playsinline
+preload="metadata">
+
+<source src="{{ url_for('static',filename='videos/birthday.mp4') }}" type="video/mp4">
+
+Your browser doesn't support video.
+
+</video>
+
+<div class="videoButtons">
+
+<button onclick="replayVideo()">
+
+🔄 Replay
+
+</button>
+
+<button onclick="goToHug()">
+
+Continue 🤗
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<section id="hugScreen" class="screen">
+
+<div class="card hugCard">
+
+<h1>A Big Virtual Hug 🤗</h1>
+
+<img
+id="hugImage"
+class="hugImage"
+src="{{ url_for('static',filename='images/bear_hug.png') }}">
+
+<h2>Sending You The Warmest Hug ❤️</h2>
+
+<p>
+
+If I could be there today,
+
+I would give you the biggest hug ever.
+
+Until then,
+
+accept this virtual hug filled with love,
+
+care and endless best wishes.
+
+Happy Birthday Pattu ❤️
+
+</p>
+
+<button onclick="goToMoon()">
+
+Continue 🌙
+
+</button>
+
+</div>
+
+</section>
+<section id="moonScreen" class="screen">
+
+<div class="card moonCard">
+
+<div class="moon">🌕</div>
+
+<h1>Look At The Moon Tonight 🌙</h1>
+
+<p>
+
+Whenever you look at the moon,
+
+remember that someone is smiling
+
+thinking about you.
+
+No matter how far we are,
+
+we'll always share the same moon,
+
+the same stars,
+
+and the same beautiful memories.
+
+Happy Birthday once again,
+
+My Dear Pattu ❤️
+
+</p>
+
+<button onclick="goToFinale()">
+
+One Last Surprise ✨
+
+</button>
+
+</div>
+
+</section>
+<section id="finalScreen" class="screen">
+
+<div class="card finalCard">
+
+<h1>🎉 Happy Birthday 🎉</h1>
+
+<h2>Alla Mahima Kumari</h2>
+
+<h3>Our Lovely Pattu ❤️</h3>
+
+<p class="finalMessage">
+
+May your life always be filled with
+
+Love ❤️
+
+Happiness 😊
+
+Good Health 🌸
+
+Success ⭐
+
+Peace 🌙
+
+and endless beautiful memories.
+
+Thank you for being such a wonderful person.
+
+Enjoy your special day!
+
+Lots of Love ❤️
+
+</p>
+
+<button onclick="restartJourney()">
+
+🔄 Experience Again
+
+</button>
+
+</div>
+
+</section>
+
+<script src="{{ url_for('static',filename='js/app.js') }}"></script>
 
 </body>
-
 </html>
